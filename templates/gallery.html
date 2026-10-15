@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Cloud Storage Gallery</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+body { font-family: Arial; background:#fff; color:#222; text-align:center; padding:18px; }
+h1 { color:#1a73e8; }
+.grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(240px,1fr)); gap:14px; max-width:1100px; margin:18px auto; }
+.card { border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.08); overflow:hidden; }
+.card img { width:100%; height:auto; display:block; }
+.controls { margin-top:12px; }
+a.button { display:inline-block; padding:10px 16px; background:#1a73e8; color:white; text-decoration:none; border-radius:6px; margin:6px; }
+</style>
+</head>
+<body>
+<h1>Cloud Storage Gallery</h1>
+<div class="controls">
+    <a class="button" href="{{ url_for('index') }}">← Back to Live Feed</a>
+    <a class="button" href="{{ url_for('clear_storage') }}">Clear Storage</a>
+</div>
+{% if images %}
+<div class="grid">
+{% for img in images %}
+    <div class="card">
+        <img src="{{ url_for('serve_image', filename=img) }}" alt="{{ img }}">
+    </div>
+{% endfor %}
+</div>
+{% else %}
+<p>No images yet. Go to the live feed to start detections.</p>
+{% endif %}
+</body>
+</html>

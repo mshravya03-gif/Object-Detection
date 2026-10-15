@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Cloud Surveillance - Live</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+body { font-family: Arial; background:#f5f7fb; color:#222; text-align:center; padding:18px; }
+h1 { color:#1a73e8; }
+.video { margin-top:12px; display:inline-block; border-radius:8px; box-shadow:0 6px 18px rgba(0,0,0,0.12); overflow:hidden; }
+img { display:block; width: 640px; max-width:100%; height:auto; }
+.actions { margin-top:16px; }
+a.button { display:inline-block; padding:10px 16px; background:#1a73e8; color:white; text-decoration:none; border-radius:6px; margin:6px; }
+a.button.secondary { background:#34a853; }
+p.small { color:#666; font-size:14px; margin-top:8px; }
+</style>
+</head>
+<body>
+<h1>Cloud-Based Video Surveillance (Live)</h1>
+<div class="video">
+    <img src="{{ url_for('video_feed') }}" alt="Live feed" />
+</div>
+<div class="actions">
+    <a class="button" href="{{ url_for('gallery') }}">Open Cloud Storage Gallery</a>
+    <a class="button secondary" href="{{ url_for('clear_storage') }}">Clear Cloud Storage</a>
+</div>
+<p class="small">Images saved locally in <strong>cloud_storage/</strong>. Google Drive upload optional (USE_CLOUD=True).</p>
+</body>
+</html>
